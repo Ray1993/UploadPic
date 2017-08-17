@@ -11,12 +11,19 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
+Vue.component('pic-list',{
+  template:'<li><a href=\'javascript:;\'><img :src=\'url\' alt=\'上传的图片\'></a></li>'
+})
 export default {
   name: 'app',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      addicon:'src/assets/add.png'
+      urlarry:[
+        {id:0,url:'src/assets/add.png'}
+      ]
     }
   },
   methods:{
