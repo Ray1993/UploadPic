@@ -2,11 +2,11 @@
   <div id="app">
     <div class="pic-list">
         <ul>
-            <li><a href="javascript:;"><img :src="addicon" alt="选择图片"></a></li>
+            <li><a href="javascript:;" @click="choosepic"><img :src="addicon" alt="选择图片"></a></li>
         </ul>
     </div>
     <input type="button" name="upload" value="确认上传" class="submit">
-    <input type="file" hidden id="picfile">
+    <input type="file" hidden ref="file" >
   </div>
 </template>
 
@@ -18,6 +18,11 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       addicon:'src/assets/add.png'
     }
+  },
+  methods:{
+      choosepic(){
+         this.$refs.file.click();      
+      }
   }
 }
 </script>
