@@ -2,6 +2,7 @@
   <div id="app">
     <div class="pic-list">
         <ul>
+            <li is="pic-list" v-for="(url,index) in urlarry" v-bind:key="url.id" v-bind:url=""><a href="javascript:;" @click="choosepic"><img :src="addicon" alt="选择图片"></a></li>
             <li><a href="javascript:;" @click="choosepic"><img :src="addicon" alt="选择图片"></a></li>
         </ul>
     </div>
@@ -22,7 +23,10 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       urlarry:[
-        {id:0,url:'src/assets/add.png'}
+        {
+          id:1,
+          url:'src/assets/add.png'
+        }
       ]
     }
   },
