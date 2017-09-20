@@ -31,31 +31,41 @@
        <div class="background">
            <img :src="seller.avatar" alt="headerbg" width="100%" height="100%">
        </div>
-       <div v-show="detailShow" class="detail" >
-           <div class="detail-wrapper clearfix">
-               <div class="detail-main">
-                   <h1 class="name">{{seller.name}}</h1>
-                   <div class="star-wrapper">
-                     <star :size="48" :score="seller.score"></star>
-                   </div>
-                   <div class="title">
-                       <div class="line"></div>
-                       <div class="text">优惠信息</div>
-                       <div class="line"></div>
-                   </div>
-                   <ul v-if="seller.supports" class="supports">
-                       <li class="support-item" v-for="item in seller.supports" :key="item.type">
-                           <span class="icon" :class="classMap[item.type]"></span>
-                           <span class="text">{{item.description}}</span>
-                       </li>
-                   </ul>
-               </div>
-           </div>
-           
-           <div @click="closeDetail" class="detail-close">
-               <i class="icon-close"></i>
-           </div>
-       </div>
+       <transition name="fade">
+            <div v-show="detailShow" class="detail">
+                <div class="detail-wrapper clearfix">
+                    <div class="detail-main">
+                        <h1 class="name">{{seller.name}}</h1>
+                        <div class="star-wrapper">
+                            <star :size="48" :score="seller.score"></star>
+                        </div>
+                        <div class="title">
+                            <div class="line"></div>
+                            <div class="text">优惠信息</div>
+                            <div class="line"></div>
+                        </div>
+                        <ul v-if="seller.supports" class="supports">
+                            <li class="support-item" v-for="item in seller.supports" :key="item.type">
+                                <span class="icon" :class="classMap[item.type]"></span>
+                                <span class="text">{{item.description}}</span>
+                            </li>
+                        </ul>
+                        <div class="title">
+                            <div class="line"></div>
+                            <div class="text">商家公告</div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="bulletin">
+                            <p class="content">{{seller.bulletin}}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div @click="closeDetail" class="detail-close">
+                    <i class="icon-close"></i>
+                </div>
+            </div>
+       </transition>
     </div>
 </template>
 
@@ -203,6 +213,12 @@ import star from 'components/star/star';
       height :100%
       z-index :-1
       filter :blur(10px)
+    .fade-enter,.fade-leave-to
+      opacity: 0;
+    .fade-enter-to,.fade-leave
+      opacity: 1;
+    .fade-leave-active,.fade-enter-active
+      transition: all 0.5s;
     .detail
       position :fixed
       z-index :100
@@ -211,7 +227,7 @@ import star from 'components/star/star';
       width :100%
       height 100%
       overflow :auto
-      background :rgba(7,17,27,0.8)
+      background: rgba(7, 17, 27, 0.8);
       .detail-wrapper
         min-height :100%
         width :100%
@@ -270,6 +286,13 @@ import star from 'components/star/star';
               .text
                 line-height :16px
                 font-size :12px
+          .bulletin
+            width :80%
+            margin :0 auto
+            .content
+              padding :0 12px
+              line-height :24px
+              font-size :12px
       .detail-close
         position :relative
         width :32px
