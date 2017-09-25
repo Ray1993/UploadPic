@@ -227,7 +227,8 @@ import star from 'components/star/star';
       width :100%
       height 100%
       overflow :auto
-      background: rgba(7, 17, 27, 0.8);
+      background: rgba(7, 17, 27, 0.8)
+      backdrop-filter :blur(10px)
       .detail-wrapper
         min-height :100%
         width :100%
