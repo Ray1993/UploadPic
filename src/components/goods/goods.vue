@@ -11,7 +11,7 @@
         </div>
         <div class="foods-wrapper"  ref="foodsWrapper">
              <ul>
-                 <li v-for="item in goods" class="food-list food-list-hook" :key="item.type">
+                 <li v-for="item in goods" class="food-list food-list-hook" :key="item.type" ref="foodList">
                      <h1 class="title">{{item.name}}</h1>
                      <ul>
                          <li v-for="food in item.foods" class="food-item border-1px" :key="food.name">
@@ -108,7 +108,9 @@ const ERR_OK = 0;
                 }
            },
            selectMenu(index, event) {
-               console.log(index);
+                let foodList = this.$refs.foodList;
+                let el = foodList[index];
+                this.foodsScroll.scrollToElement(el, 300);
            }
        }
    };
