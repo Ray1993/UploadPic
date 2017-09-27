@@ -82,9 +82,12 @@ const ERR_OK = 0;
        },
        methods: {
            _initScroll() {
-                this.meunScroll = new BScroll(this.$refs.menuWrapper);
+                this.meunScroll = new BScroll(this.$refs.menuWrapper, {
+                    click: true
+                });
 
                 this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
+                    click: true,
                     probeType: 3
                 });
                 this.foodsScroll.on('scroll', (pos) => {
