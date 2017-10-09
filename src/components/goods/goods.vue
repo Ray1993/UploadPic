@@ -33,11 +33,13 @@
                  </li>
              </ul>
         </div>
+        <shopcart></shopcart>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
 import BScroll from 'better-scroll';
+import shopcart from 'components/shopcart/shopcart';
 
 const ERR_OK = 0;
 
@@ -79,6 +81,9 @@ const ERR_OK = 0;
                }
            });
            this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
+       },
+       components: {
+           shopcart
        },
        methods: {
            _initScroll() {
